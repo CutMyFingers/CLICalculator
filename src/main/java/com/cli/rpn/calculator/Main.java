@@ -1,11 +1,11 @@
 package com.cli.rpn.calculator;
 
+import com.cli.rpn.calculator.business.ConsoleEngine;
+
 public class Main {
 
-    private static Engine engine = new Engine();
-
     public static void main(String[] args) {
-        engine.run();
+        ConsoleEngine.run();
     }
 
 }
