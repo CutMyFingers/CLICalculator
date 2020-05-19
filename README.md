@@ -8,5 +8,5 @@ Unlike with a traditional calculator, you enter the parameters first, than the o
 ```
 > 20
 > 50
-> -
+> +
 ```
