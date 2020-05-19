@@ -13,14 +13,14 @@ import static java.lang.System.out;
 
 public class ConsoleProcessor {
 
-    // Stores numbers entered by a user and results of calculations
     private Deque<Double> numbersStack = new ArrayDeque<>();
     private Pattern numericRegex = Pattern.compile("-?\\d+(\\.\\d+)?");
 
     public void process(String data) {
         if (data == null) return;
 
-        boolean isNumeric = numericRegex.matcher(data).matches();
+        boolean isNumeric = numericRegex.matcher(data)
+                .matches();
         if (isNumeric) {
             processNumeric(data);
         } else {
@@ -28,14 +28,15 @@ public class ConsoleProcessor {
         }
     }
 
+    // Adds number to stack
     private void processNumeric(String data) {
         Double number = parseDouble(data);
         numbersStack.push(number);
         out.println(number);
     }
 
+    // Uses two last numbers from stack for calculation.
     private void processOperation(String data) {
-        // Get desired calculator implementation
         ICalculator calculator = CalculatorHelper.getCalculatorImpl(data);
         if (calculator == null) {
             out.println(data + " operation is not supported!");
@@ -43,6 +44,7 @@ public class ConsoleProcessor {
         }
 
         try {
+            // Checks if there are enough numbers for calculation
             if (numbersStack.size() > 1) {
                 Double a = numbersStack.pop();
                 Double b = numbersStack.pop();
